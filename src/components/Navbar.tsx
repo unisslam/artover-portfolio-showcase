@@ -41,13 +41,7 @@ const Navbar = () => {
             <button onClick={() => scrollToSection('portfolio')} className="text-foreground hover:text-accent transition-colors duration-200">
               معرض الأعمال
             </button>
-            <Link 
-              to="/admin/projects" 
-              className="flex items-center gap-1 text-foreground hover:text-accent transition-colors duration-200"
-            >
-              <Settings className="w-4 h-4" />
-              إدارة المشاريع
-            </Link>
+            
             <Button onClick={() => scrollToSection('contact')} className="bg-accent hover:bg-accent/90">
               تواصل معي
             </Button>
