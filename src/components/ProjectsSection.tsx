@@ -40,10 +40,10 @@ const ProjectsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            <span className="gradient-text">المشاريع</span> المنجزة
+            <span className="gradient-text">المشاريع</span> والإنجازات
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            مجموعة من المشاريع التقنية المتنوعة التي قمت بتطويرها وتنفيذها بنجاح
+            مجموعة من المشاريع والإنجازات التقنية المتنوعة التي قمت بتطويرها وتنفيذها بنجاح
           </p>
         </div>
 
