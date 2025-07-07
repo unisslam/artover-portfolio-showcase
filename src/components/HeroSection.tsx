@@ -1,17 +1,15 @@
-
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
-
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+  return <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 right-20 w-72 h-72 bg-accent rounded-full blur-3xl animate-float"></div>
@@ -33,33 +31,20 @@ const HeroSection = () => {
           {/* Main Title */}
           <div className="space-y-4">
             <h1 className="text-5xl md:text-7xl font-bold text-primary mb-4">
-              المهندس <span className="gradient-text">يونس</span>
+              المهندس <span className="gradient-text">يونس سلام</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              مهندس نظم ومطور برمجيات | مطور ERP | مستشار تقني
-            </p>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">مهندس نظم ومطور برمجيات | مونتير | مستشار تقني | صاحب شركة Artover</p>
           </div>
 
           {/* Description */}
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            أقوم بتحويل الأفكار إلى حلول تقنية مبتكرة وفعالة، مع التركيز على تطوير الأنظمة والتطبيقات التي تلبي احتياجات العملاء وتحقق أهدافهم التجارية.
-          </p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">أقوم بتحويل الأفكار إلى حلول تقنية وبصرية مبتكرة وفعالة، مع التركيز على تطوير الأنظمة والتطبيقات التي تلبي احتياجات العملاء وتحقق أهدافهم التجارية، وكذلك التصاميم التسويقية الهادفة وذات الافكار الغير نمطية.</p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button 
-              onClick={() => scrollToSection('portfolio')}
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-            >
+            <Button onClick={() => scrollToSection('portfolio')} size="lg" className="bg-accent hover:bg-accent/90 text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
               استعرض أعمالي
             </Button>
-            <Button 
-              onClick={() => scrollToSection('contact')}
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 py-3 rounded-full border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300"
-            >
+            <Button onClick={() => scrollToSection('contact')} variant="outline" size="lg" className="text-lg px-8 py-3 rounded-full border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300">
               تواصل معي
             </Button>
           </div>
@@ -70,8 +55,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
