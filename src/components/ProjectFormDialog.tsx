@@ -15,6 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent } from '@/components/ui/card';
 import { X, Plus, Upload } from 'lucide-react';
 import { Project } from '@/contexts/ProjectContext';
+import ImageUploader from '@/components/ImageUploader';
 
 interface ProjectFormDialogProps {
   isOpen: boolean;
@@ -29,7 +30,8 @@ interface ProjectFormData {
   description: string;
   technologies: string[];
   status: string;
-  image: string;
+  image: string; // للتوافق مع النسخة القديمة
+  images: string[]; // الصور الجديدة
   duration: string;
   team: string;
   client: string;
@@ -52,6 +54,7 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
       technologies: [],
       status: 'قيد التطوير',
       image: '',
+      images: [],
       duration: '',
       team: '',
       client: '',
@@ -61,11 +64,13 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
       solution: '',
       demo_url: '',
       github_url: ''
-    }
+    },
+    mode: 'onChange'
   });
 
   const technologies = watch('technologies');
   const features = watch('features');
+  const images = watch('images');
 
   useEffect(() => {
     if (project && mode === 'edit') {
@@ -75,6 +80,7 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
         technologies: project.technologies,
         status: project.status,
         image: project.image,
+        images: project.images || [project.image].filter(Boolean),
         duration: project.duration,
         team: project.team,
         client: project.client,
@@ -92,6 +98,7 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
         technologies: [],
         status: 'قيد التطوير',
         image: '',
+        images: [],
         duration: '',
         team: '',
         client: '',
@@ -130,6 +137,8 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
   const onFormSubmit = (data: ProjectFormData) => {
     onSubmit({
       ...data,
+      // التأكد من أن الصورة الرئيسية هي أول صورة
+      image: data.images[0] || data.image,
       demo_url: data.demo_url || undefined,
       github_url: data.github_url || undefined
     });
@@ -208,13 +217,27 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
               </div>
 
               <div>
-                <Label htmlFor="image">رابط الصورة *</Label>
+                <Label htmlFor="images">صور المشروع *</Label>
                 <Controller
                   name="image"
                   control={control}
-                  rules={{ required: 'رابط الصورة مطلوب' }}
-                  render={({ field }) => (
-                    <Input {...field} id="image" placeholder="https://example.com/image.jpg" />
+                  rules={{ 
+                    validate: () => {
+                      const currentImages = watch('images');
+                      return currentImages && currentImages.length > 0 ? true : 'يجب إضافة صورة واحدة على الأقل';
+                    }
+                  }}
+                  render={() => (
+                    <ImageUploader
+                      images={images}
+                      onImagesChange={(newImages) => {
+                        setValue('images', newImages);
+                        // تحديث الصورة الرئيسية للتوافق مع النسخة القديمة
+                        setValue('image', newImages[0] || '');
+                      }}
+                      maxImages={5}
+                      className="mt-2"
+                    />
                   )}
                 />
                 {errors.image && <span className="text-red-500 text-sm">{errors.image.message}</span>}

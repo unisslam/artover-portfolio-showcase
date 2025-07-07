@@ -12,7 +12,8 @@ export interface Project {
   description: string;
   technologies: string[];
   status: string;
-  image: string;
+  image: string; // الصورة الرئيسية للتوافق مع النسخة القديمة
+  images?: string[]; // مصفوفة الصور الجديدة
   duration: string;
   team: string;
   client: string;

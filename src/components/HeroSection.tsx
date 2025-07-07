@@ -1,6 +1,6 @@
-
-import { Button } from '@/components/ui/button';
-import { ArrowDown } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { ArrowDown } from "lucide-react";
+import { getImagePath } from "@/lib/assets";
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -27,7 +27,7 @@ const HeroSection = () => {
             <div className="w-full h-full rounded-full bg-gradient-to-br from-accent to-primary p-1">
               <div className="w-full h-full rounded-full overflow-hidden">
                 <img 
-                  src="/lovable-uploads/e4d751ef-906a-46d9-8081-3e466f939597.png" 
+                  src={getImagePath("e4d751ef-906a-46d9-8081-3e466f939597.png")} 
                   alt="المهندس يونس سلام"
                   className="w-full h-full object-cover"
                 />
