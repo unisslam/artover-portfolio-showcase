@@ -156,28 +156,28 @@ const ProjectDetailsDialog = ({ project, isOpen, onClose }: ProjectDetailsDialog
           </div>
 
           {/* Action Buttons */}
-          {(project.demoUrl || project.githubUrl) && (
+          {(project.demo_url || project.github_url) && (
             <>
               <Separator />
               <div className="flex flex-wrap gap-4 justify-center">
-                {project.demoUrl && (
+                {project.demo_url && (
                   <Button 
                     asChild
                     className="bg-accent hover:bg-accent/90"
                   >
-                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={project.demo_url} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4 ml-2" />
                       معاينة المشروع
                     </a>
                   </Button>
                 )}
-                {project.githubUrl && (
+                {project.github_url && (
                   <Button 
                     asChild
                     variant="outline"
                     className="border-primary text-primary hover:bg-primary hover:text-white"
                   >
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={project.github_url} target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4 ml-2" />
                       الكود المصدري
                     </a>
