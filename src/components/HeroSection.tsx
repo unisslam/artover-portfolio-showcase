@@ -41,7 +41,7 @@ const HeroSection = () => {
             <h1 className="text-5xl md:text-7xl font-bold text-primary mb-4">
               المهندس <span className="gradient-text">يونس سلام</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">مهندس نظم ومطور برمجيات | مونتير | مستشار تقني | صاحب شركة Artover</p>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">مهندس نظم ومطور برمجيات | مونتير | مستشار تقني | CEO of Artover</p>
           </div>
 
           {/* Description */}

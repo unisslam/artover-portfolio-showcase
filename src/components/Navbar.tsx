@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { Settings } from 'lucide-react';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -39,6 +41,13 @@ const Navbar = () => {
             <button onClick={() => scrollToSection('portfolio')} className="text-foreground hover:text-accent transition-colors duration-200">
               معرض الأعمال
             </button>
+            <Link 
+              to="/admin/projects" 
+              className="flex items-center gap-1 text-foreground hover:text-accent transition-colors duration-200"
+            >
+              <Settings className="w-4 h-4" />
+              إدارة المشاريع
+            </Link>
             <Button onClick={() => scrollToSection('contact')} className="bg-accent hover:bg-accent/90">
               تواصل معي
             </Button>
@@ -69,6 +78,14 @@ const Navbar = () => {
               <button onClick={() => scrollToSection('portfolio')} className="block px-3 py-2 text-foreground hover:text-accent w-full text-right">
                 معرض الأعمال
               </button>
+              <Link 
+                to="/admin/projects" 
+                className="flex items-center gap-2 px-3 py-2 text-foreground hover:text-accent w-full text-right"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Settings className="w-4 h-4" />
+                إدارة المشاريع
+              </Link>
               <Button onClick={() => scrollToSection('contact')} className="w-full mt-2 bg-accent hover:bg-accent/90">
                 تواصل معي
               </Button>

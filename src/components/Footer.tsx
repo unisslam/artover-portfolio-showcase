@@ -9,10 +9,10 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="space-y-4">
             <div className="text-2xl font-bold">
-              <span className="text-accent">ART</span>OVER
+              <span className="text-accent">ART</span>OVER | <span className="text-accent">UNISSLAM</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              مهندس نظم ومطور برمجيات متخصص في تطوير الحلول التقنية المبتكرة والأنظمة المؤسسية الشاملة.
+              أقوم بتحويل الأفكار إلى حلول تقنية وبصرية مبتكرة وفعالة، مع التركيز على تطوير الأنظمة والتطبيقات التي تلبي احتياجات العملاء وتحقق أهدافهم التجارية، وكذلك التصاميم التسويقية الهادفة وذات الافكار الغير نمطية.
             </p>
           </div>
 
