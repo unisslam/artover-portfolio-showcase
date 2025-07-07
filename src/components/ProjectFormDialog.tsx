@@ -37,8 +37,8 @@ interface ProjectFormData {
   features: string[];
   challenges: string;
   solution: string;
-  demoUrl: string;
-  githubUrl: string;
+  demo_url: string;
+  github_url: string;
 }
 
 const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: ProjectFormDialogProps) => {
@@ -59,8 +59,8 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
       features: [],
       challenges: '',
       solution: '',
-      demoUrl: '',
-      githubUrl: ''
+      demo_url: '',
+      github_url: ''
     }
   });
 
@@ -82,8 +82,8 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
         features: project.features,
         challenges: project.challenges,
         solution: project.solution,
-        demoUrl: project.demoUrl || '',
-        githubUrl: project.githubUrl || ''
+        demo_url: project.demo_url || '',
+        github_url: project.github_url || ''
       });
     } else if (mode === 'add') {
       reset({
@@ -99,8 +99,8 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
         features: [],
         challenges: '',
         solution: '',
-        demoUrl: '',
-        githubUrl: ''
+        demo_url: '',
+        github_url: ''
       });
     }
   }, [project, mode, reset]);
@@ -130,8 +130,8 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
   const onFormSubmit = (data: ProjectFormData) => {
     onSubmit({
       ...data,
-      demoUrl: data.demoUrl || undefined,
-      githubUrl: data.githubUrl || undefined
+      demo_url: data.demo_url || undefined,
+      github_url: data.github_url || undefined
     });
     onClose();
   };
@@ -283,23 +283,23 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="demoUrl">رابط العرض التوضيحي</Label>
+                  <Label htmlFor="demo_url">رابط العرض التوضيحي</Label>
                   <Controller
-                    name="demoUrl"
+                    name="demo_url"
                     control={control}
                     render={({ field }) => (
-                      <Input {...field} id="demoUrl" placeholder="https://demo.example.com" />
+                      <Input {...field} id="demo_url" placeholder="https://demo.example.com" />
                     )}
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="githubUrl">رابط GitHub</Label>
+                  <Label htmlFor="github_url">رابط GitHub</Label>
                   <Controller
-                    name="githubUrl"
+                    name="github_url"
                     control={control}
                     render={({ field }) => (
-                      <Input {...field} id="githubUrl" placeholder="https://github.com/username/repo" />
+                      <Input {...field} id="github_url" placeholder="https://github.com/username/repo" />
                     )}
                   />
                 </div>

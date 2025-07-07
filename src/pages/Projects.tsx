@@ -9,7 +9,7 @@ import { useProjects } from '@/contexts/ProjectContext';
 import ProjectDetailsDialog from '../components/ProjectDetailsDialog';
 
 const Projects = () => {
-  const { projects } = useProjects();
+  const { projects, loading } = useProjects();
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -20,6 +20,19 @@ const Projects = () => {
 
   const completedProjects = projects.filter(p => p.status === 'مكتمل');
   const inProgressProjects = projects.filter(p => p.status === 'قيد التطوير');
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-secondary/30 to-background">
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto mb-4"></div>
+            <p className="text-lg text-muted-foreground">جاري تحميل المشاريع...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/30 to-background">

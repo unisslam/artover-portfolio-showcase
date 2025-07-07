@@ -8,12 +8,27 @@ import { useProjects } from '@/contexts/ProjectContext';
 import ProjectDetailsDialog from './ProjectDetailsDialog';
 
 const ProjectsSection = () => {
-  const { projects } = useProjects();
+  const { projects, loading } = useProjects();
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // Show only the first 3 projects in the main page
   const featuredProjects = projects.slice(0, 3);
+
+  if (loading) {
+    return (
+      <section id="projects" className="py-20 bg-secondary/30 section-transition">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-center py-20">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto mb-4"></div>
+              <p className="text-muted-foreground">جاري تحميل المشاريع...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const handleViewDetails = (project: any) => {
     setSelectedProject(project);

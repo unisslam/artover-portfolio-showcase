@@ -33,7 +33,7 @@ import {
 import { toast } from '@/hooks/use-toast';
 
 const ProjectsAdmin = () => {
-  const { projects, addProject, updateProject, deleteProject } = useProjects();
+  const { projects, loading, addProject, updateProject, deleteProject } = useProjects();
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [isFormDialogOpen, setIsFormDialogOpen] = useState(false);
@@ -64,12 +64,12 @@ const ProjectsAdmin = () => {
     setIsFormDialogOpen(true);
   };
 
-  const handleDeleteProject = (id: number) => {
-    deleteProject(id);
-    toast({
-      title: "تم حذف المشروع",
-      description: "تم حذف المشروع بنجاح",
-    });
+  const handleDeleteProject = async (id: number) => {
+    try {
+      await deleteProject(id);
+    } catch (error) {
+      // Error is handled in context
+    }
   };
 
   const handleViewProject = (project: any) => {
@@ -77,19 +77,15 @@ const ProjectsAdmin = () => {
     setIsDetailsDialogOpen(true);
   };
 
-  const handleFormSubmit = (projectData: any) => {
-    if (formMode === 'add') {
-      addProject(projectData);
-      toast({
-        title: "تم إضافة المشروع",
-        description: "تم إضافة المشروع الجديد بنجاح",
-      });
-    } else {
-      updateProject(selectedProject.id, projectData);
-      toast({
-        title: "تم تحديث المشروع",
-        description: "تم تحديث بيانات المشروع بنجاح",
-      });
+  const handleFormSubmit = async (projectData: any) => {
+    try {
+      if (formMode === 'add') {
+        await addProject(projectData);
+      } else {
+        await updateProject(selectedProject.id, projectData);
+      }
+    } catch (error) {
+      // Error is handled in context
     }
   };
 
@@ -110,6 +106,19 @@ const ProjectsAdmin = () => {
 
   const completedProjects = projects.filter(p => p.status === 'مكتمل');
   const inProgressProjects = projects.filter(p => p.status === 'قيد التطوير');
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-secondary/30 to-background">
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto mb-4"></div>
+            <p className="text-lg text-muted-foreground">جاري تحميل المشاريع...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/30 to-background">
@@ -288,9 +297,9 @@ const ProjectsAdmin = () => {
 
                     {/* Links */}
                     <div className="flex items-center gap-4 mb-4">
-                      {project.demoUrl && (
+                      {project.demo_url && (
                         <a
-                          href={project.demoUrl}
+                          href={project.demo_url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-1 text-blue-600 hover:text-blue-800 text-sm"
@@ -299,9 +308,9 @@ const ProjectsAdmin = () => {
                           عرض توضيحي
                         </a>
                       )}
-                      {project.githubUrl && (
+                      {project.github_url && (
                         <a
-                          href={project.githubUrl}
+                          href={project.github_url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-1 text-gray-600 hover:text-gray-800 text-sm"
