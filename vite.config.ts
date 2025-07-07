@@ -4,6 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
+  base: "/artover-portfolio-showcase/", // أضف اسم repository هنا
   server: {
     host: "::",
     port: 8080,
