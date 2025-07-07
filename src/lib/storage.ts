@@ -141,3 +141,37 @@ export function resizeImage(file: File, maxWidth = 1920, maxHeight = 1080, quali
     img.src = URL.createObjectURL(file)
   })
 }
+
+/**
+ * حذف جميع صور المشروع من التخزين
+ */
+export async function deleteProjectImages(images: string[]): Promise<void> {
+  try {
+    if (!images || images.length === 0) return;
+
+    const fileNames = images.map(imageUrl => {
+      try {
+        const url = new URL(imageUrl);
+        const pathParts = url.pathname.split('/');
+        return pathParts[pathParts.length - 1];
+      } catch {
+        // في حالة كان الرابط غير صحيح، نتجاهله
+        return null;
+      }
+    }).filter(Boolean) as string[];
+
+    if (fileNames.length > 0) {
+      const { error } = await supabase.storage
+        .from('project-images')
+        .remove(fileNames);
+
+      if (error) {
+        console.error('Error deleting project images:', error);
+        // لا نرمي خطأ هنا لأن حذف المشروع من قاعدة البيانات أهم
+      }
+    }
+  } catch (error) {
+    console.error('Error deleting project images:', error);
+    // لا نرمي خطأ هنا لأن حذف المشروع من قاعدة البيانات أهم
+  }
+}

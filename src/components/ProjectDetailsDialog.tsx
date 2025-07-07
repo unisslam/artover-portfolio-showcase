@@ -42,7 +42,7 @@ const ProjectDetailsDialog = ({ project, isOpen, onClose }: ProjectDetailsDialog
           {/* Project Image */}
           <div className="relative rounded-lg overflow-hidden">
             <img 
-              src={project.image} 
+              src={project.images && project.images.length > 0 ? project.images[0] : project.image} 
               alt={project.title}
               className="w-full h-64 object-cover"
             />
@@ -55,7 +55,32 @@ const ProjectDetailsDialog = ({ project, isOpen, onClose }: ProjectDetailsDialog
                 {project.status}
               </Badge>
             </div>
+            {/* عداد الصور إذا كان هناك أكثر من صورة */}
+            {project.images && project.images.length > 1 && (
+              <div className="absolute bottom-4 left-4 bg-black/70 text-white px-2 py-1 rounded text-sm">
+                {project.images.length} صور
+              </div>
+            )}
           </div>
+
+          {/* معرض الصور الإضافية */}
+          {project.images && project.images.length > 1 && (
+            <div>
+              <h3 className="text-lg font-semibold text-primary mb-3">صور إضافية</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {project.images.slice(1).map((imageUrl: string, index: number) => (
+                  <div key={index} className="relative rounded-lg overflow-hidden">
+                    <img 
+                      src={imageUrl} 
+                      alt={`${project.title} - صورة ${index + 2}`}
+                      className="w-full h-32 object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                    />
+                  </div>
+                ))}
+              </div>
+              <Separator className="mt-6" />
+            </div>
+          )}
 
           {/* Project Info Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

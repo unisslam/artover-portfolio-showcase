@@ -13,7 +13,7 @@ export interface Project {
   technologies: string[];
   status: string;
   image: string; // الصورة الرئيسية للتوافق مع النسخة القديمة
-  images?: string[]; // مصفوفة الصور الجديدة
+  images: string[]; // مصفوفة الصور - سنستخدم هذا كحقل أساسي
   duration: string;
   team: string;
   client: string;
@@ -79,6 +79,14 @@ export const projectsApi = {
 
   // Delete project
   async deleteProject(id: number): Promise<void> {
+    // أولاً نحصل على بيانات المشروع لحذف الصور
+    const { data: project } = await supabase
+      .from('projects')
+      .select('images, image')
+      .eq('id', id)
+      .single();
+
+    // حذف المشروع من قاعدة البيانات
     const { error } = await supabase
       .from('projects')
       .delete()
@@ -87,6 +95,18 @@ export const projectsApi = {
     if (error) {
       console.error('Error deleting project:', error);
       throw error;
+    }
+
+    // حذف الصور من التخزين
+    if (project) {
+      try {
+        const { deleteProjectImages } = await import('@/lib/storage');
+        const imagesToDelete = project.images || (project.image ? [project.image] : []);
+        await deleteProjectImages(imagesToDelete);
+      } catch (imageError) {
+        console.error('Error deleting project images:', imageError);
+        // لا نرمي خطأ هنا لأن المشروع تم حذفه بنجاح من قاعدة البيانات
+      }
     }
   },
 

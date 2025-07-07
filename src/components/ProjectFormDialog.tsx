@@ -31,7 +31,7 @@ interface ProjectFormData {
   technologies: string[];
   status: string;
   image: string; // للتوافق مع النسخة القديمة
-  images: string[]; // الصور الجديدة
+  images: string[]; // مصفوفة الصور الأساسية
   duration: string;
   team: string;
   client: string;
@@ -74,13 +74,18 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
 
   useEffect(() => {
     if (project && mode === 'edit') {
+      // توحيد التعامل مع الصور - نعطي الأولوية لـ images ثم image
+      const projectImages = project.images && project.images.length > 0 
+        ? project.images 
+        : (project.image ? [project.image] : []);
+
       reset({
         title: project.title,
         description: project.description,
         technologies: project.technologies,
         status: project.status,
-        image: project.image,
-        images: project.images || [project.image].filter(Boolean),
+        image: projectImages[0] || '', // الصورة الأولى كصورة رئيسية
+        images: projectImages,
         duration: project.duration,
         team: project.team,
         client: project.client,
@@ -135,10 +140,17 @@ const ProjectFormDialog = ({ isOpen, onClose, onSubmit, project, mode }: Project
   };
 
   const onFormSubmit = (data: ProjectFormData) => {
+    // التأكد من وجود صور
+    if (!data.images || data.images.length === 0) {
+      alert('يجب إضافة صورة واحدة على الأقل');
+      return;
+    }
+
     onSubmit({
       ...data,
       // التأكد من أن الصورة الرئيسية هي أول صورة
-      image: data.images[0] || data.image,
+      image: data.images[0], // الصورة الأولى دائماً
+      images: data.images, // مصفوفة الصور كاملة
       demo_url: data.demo_url || undefined,
       github_url: data.github_url || undefined
     });

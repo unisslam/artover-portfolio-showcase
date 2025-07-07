@@ -111,19 +111,25 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     disabled: images.length >= maxImages
   })
 
-  const removeImage = async (index: number) => {
-    const imageUrl = images[index]
+  const removeImage = async (index: number, event?: React.MouseEvent) => {
+    // منع انتشار الحدث لتجنب إغلاق النافذة
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const imageUrl = images[index];
     
     try {
       // حذف الصورة من التخزين
-      await deleteImage(imageUrl)
+      await deleteImage(imageUrl);
       
       // إزالة الصورة من القائمة
-      const newImages = images.filter((_, i) => i !== index)
-      onImagesChange(newImages)
+      const newImages = images.filter((_, i) => i !== index);
+      onImagesChange(newImages);
     } catch (err) {
-      console.error('Error removing image:', err)
-      setError('فشل في حذف الصورة')
+      console.error('Error removing image:', err);
+      setError('فشل في حذف الصورة');
     }
   }
 
@@ -201,8 +207,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
                       <Button
                         size="sm"
                         variant="destructive"
-                        onClick={() => removeImage(index)}
+                        onClick={(e) => removeImage(index, e)}
                         className="h-8 w-8 p-0"
+                        type="button"
                       >
                         <X className="h-4 w-4" />
                       </Button>
