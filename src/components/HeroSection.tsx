@@ -49,7 +49,7 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button onClick={() => scrollToSection('portfolio')} size="lg" className="bg-accent hover:bg-accent/90 text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+            <Button onClick={() => scrollToSection('projects')} size="lg" className="bg-accent hover:bg-accent/90 text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
               استعرض أعمالي
             </Button>
             <Button onClick={() => scrollToSection('contact')} variant="outline" size="lg" className="text-lg px-8 py-3 rounded-full border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300">
