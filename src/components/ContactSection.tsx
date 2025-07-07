@@ -46,22 +46,22 @@ const ContactSection = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      url: "https://github.com/younes",
+      url: "https://github.com/unisslam",
       icon: "💻"
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/younes",
+      url: "https://linkedin.com/in/unisslam",
       icon: "💼"
     },
     {
       name: "Behance",
-      url: "https://behance.net/younes",
+      url: "https://behance.net/unisslam",
       icon: "🎨"
     },
     {
       name: "Telegram",
-      url: "https://t.me/younes",
+      url: "https://t.me/unisslam",
       icon: "📱"
     }
   ];
@@ -154,7 +154,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="font-medium text-primary">البريد الإلكتروني</p>
-                      <p className="text-muted-foreground">younes@artover.dev</p>
+                      <p className="text-muted-foreground">unisslam@gmail.com</p>
                     </div>
                   </div>
 
@@ -164,7 +164,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="font-medium text-primary">الهاتف</p>
-                      <p className="text-muted-foreground">+966 xx xxx xxxx</p>
+                      <p className="text-muted-foreground">+964 7730300804</p>
                     </div>
                   </div>
 
@@ -174,7 +174,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="font-medium text-primary">الموقع</p>
-                      <p className="text-muted-foreground">المملكة العربية السعودية</p>
+                      <p className="text-muted-foreground">العراق العظيم، محافظة ديالى</p>
                     </div>
                   </div>
                 </div>

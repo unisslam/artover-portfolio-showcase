@@ -32,16 +32,16 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/30 to-background">
       <Navbar />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
-        <PortfolioSection />
-        <ContactSection />
+      <main className="pt-16 md:pt-20">
+      <HeroSection />
+      <AboutSection />
+      <ProjectsSection />
+      <PortfolioSection />
+      <ContactSection />
       </main>
       <Footer />
     </div>
-  );
+    );
 };
 
 export default Index;

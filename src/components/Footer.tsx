@@ -52,13 +52,13 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">معلومات التواصل</h3>
             <div className="space-y-2 text-gray-300">
-              <p>📧 younes@artover.dev</p>
-              <p>📱 +966 xx xxx xxxx</p>
-              <p>📍 المملكة العربية السعودية</p>
+              <p>📧 unisslam@gmail.com</p>
+              <p>📱 +964 7730300804</p>
+              <p>📍 العراق العظيم، محافظة ديالى</p>
             </div>
             <div className="flex space-x-4 space-x-reverse pt-4">
               <a 
-                href="https://github.com/younes" 
+                href="https://github.com/unisslam" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-200"
@@ -66,15 +66,15 @@ const Footer = () => {
                 💻
               </a>
               <a 
-                href="https://linkedin.com/in/younes" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-200"
-              >
-                💼
-              </a>
+                      href="https://linkedin.com/in/unisslam" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-200"
+                      >
+                      in
+                      </a>
               <a 
-                href="https://behance.net/younes" 
+                href="https://behance.net/unisslam" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-200"
@@ -82,13 +82,13 @@ const Footer = () => {
                 🎨
               </a>
               <a 
-                href="https://t.me/younes" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-200"
-              >
-                📱
-              </a>
+                      href="https://x.com/unisslam" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-200"
+                      >
+                      𝕏
+                      </a>
             </div>
           </div>
         </div>
