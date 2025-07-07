@@ -1,73 +1,217 @@
-# Welcome to your Lovable project
+# معرض أعمال ARTOVER - Portfolio Showcase
 
-## Project info
+## نظرة عامة
+معرض أعمال تقني متقدم مع نظام إدارة مشاريع متكامل، يعرض خبراتي التقنية ومشاريعي المختلفة بطريقة احترافية وتفاعلية.
 
-**URL**: https://lovable.dev/projects/f4239ec0-3df7-45ab-b645-e6bf4e78d346
+## المطور
+**يونس سلام** - مطور برمجيات متخصص في التطبيقات الويب الحديثة
 
-## How can I edit this code?
+## المميزات الرئيسية
 
-There are several ways of editing your application.
+### 🎨 **واجهة مستخدم حديثة**
+- تصميم متجاوب لجميع الأجهزة
+- واجهة باللغة العربية مع دعم RTL
+- تأثيرات بصرية سلسة وجذابة
+- نظام ألوان احترافي
 
-**Use Lovable**
+### 📱 **أقسام المعرض**
+- **الصفحة الرئيسية**: نبذة شخصية ومهارات
+- **نبذة عني**: تفاصيل الخبرة والمهارات التقنية
+- **المشاريع**: عرض المشاريع مع تفاصيل كاملة
+- **معرض الأعمال**: نماذج من الأعمال السابقة
+- **تواصل معي**: معلومات التواصل
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f4239ec0-3df7-45ab-b645-e6bf4e78d346) and start prompting.
+### 🛠️ **نظام إدارة المشاريع**
+- **لوحة تحكم شاملة**: إدارة كاملة للمشاريع
+- **عمليات CRUD**: إضافة، تعديل، حذف، عرض
+- **بحث وتصفية متقدمة**: للعثور على المشاريع بسهولة
+- **نماذج تفاعلية**: لإدخال بيانات المشاريع
+- **إحصائيات مفصلة**: نظرة عامة على حالة المشاريع
 
-Changes made via Lovable will be committed automatically to this repo.
+### 💾 **قاعدة البيانات**
+- **Supabase PostgreSQL**: قاعدة بيانات سحابية آمنة
+- **حفظ دائم**: جميع التغييرات محفوظة تلقائياً
+- **أمان عالي**: حماية البيانات بأحدث المعايير
 
-**Use your preferred IDE**
+## التقنيات المستخدمة
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Frontend
+- **React 18** - مكتبة واجهة المستخدم
+- **TypeScript** - للأمان والوضوح في الكود
+- **Vite** - أداة البناء السريعة
+- **Tailwind CSS** - إطار عمل CSS المساعد
+- **shadcn/ui** - مكونات واجهة مستخدم جاهزة
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Backend & Database
+- **Supabase** - قاعدة بيانات PostgreSQL سحابية
+- **REST API** - واجهة برمجة التطبيقات
+- **Real-time subscriptions** - التحديثات الفورية
 
-Follow these steps:
+### Form Management
+- **React Hook Form** - إدارة النماذج والتحقق
+- **Zod Validation** - التحقق من صحة البيانات
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### State Management
+- **React Context API** - إدارة حالة التطبيق
+- **Custom Hooks** - خطافات مخصصة للوظائف
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## هيكل المشروع
 
-# Step 3: Install the necessary dependencies.
-npm i
+```
+src/
+├── components/          # المكونات القابلة لإعادة الاستخدام
+│   ├── ui/             # مكونات shadcn/ui
+│   ├── AboutSection.tsx
+│   ├── ContactSection.tsx
+│   ├── HeroSection.tsx
+│   ├── Navbar.tsx
+│   ├── ProjectsSection.tsx
+│   ├── ProjectDetailsDialog.tsx
+│   └── ProjectFormDialog.tsx
+├── contexts/           # Context API للحالة العامة
+│   └── ProjectContext.tsx
+├── pages/              # صفحات التطبيق
+│   ├── Index.tsx
+│   ├── Projects.tsx
+│   ├── ProjectsAdmin.tsx
+│   └── NotFound.tsx
+├── lib/                # الدوال المساعدة والإعدادات
+│   ├── supabase.ts
+│   └── utils.ts
+└── hooks/              # الخطافات المخصصة
+    └── use-toast.ts
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## طريقة التشغيل
+
+### المتطلبات
+- Node.js (الإصدار 18 أو أحدث)
+- npm أو yarn
+
+### خطوات التشغيل
+
+```bash
+# استنساخ المشروع
+git clone <repository-url>
+
+# الانتقال إلى مجلد المشروع
+cd artover-portfolio-showcase
+
+# تثبيت التبعيات
+npm install
+
+# إنشاء ملف البيئة
+cp .env.example .env.local
+
+# تحديث متغيرات البيئة
+# VITE_SUPABASE_URL=your_supabase_url
+# VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# تشغيل التطبيق
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### تشغيل لوحة الإدارة
+بعد تشغيل التطبيق، يمكن الوصول للوحة إدارة المشاريع عبر:
+- **من الـ Navbar**: اضغط على "إدارة المشاريع"
+- **مباشرة**: `http://localhost:3000/admin/projects`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## إعداد قاعدة البيانات
 
-**Use GitHub Codespaces**
+### إنشاء مشروع Supabase
+1. قم بزيارة [Supabase](https://supabase.com)
+2. أنشئ مشروعاً جديداً
+3. انسخ URL ومفتاح API
+4. ضعهما في ملف `.env.local`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### إنشاء جدول المشاريع
+```sql
+CREATE TABLE projects (
+  id BIGSERIAL PRIMARY KEY,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  technologies TEXT[] DEFAULT '{}',
+  status TEXT DEFAULT 'قيد التطوير',
+  image TEXT NOT NULL,
+  duration TEXT NOT NULL,
+  team TEXT NOT NULL,
+  client TEXT NOT NULL,
+  year TEXT NOT NULL,
+  features TEXT[] DEFAULT '{}',
+  challenges TEXT NOT NULL,
+  solution TEXT NOT NULL,
+  demo_url TEXT,
+  github_url TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+```
 
-## What technologies are used for this project?
+## الميزات المتقدمة
 
-This project is built with:
+### نظام البحث والتصفية
+- بحث نصي في العناوين والعملاء والتقنيات
+- تصفية حسب حالة المشروع (مكتمل/قيد التطوير)
+- ترتيب حسب تاريخ الإنشاء
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### إدارة النماذج
+- تحقق من صحة البيانات
+- رسائل خطأ وتأكيد واضحة
+- إدارة ديناميكية للقوائم (التقنيات، المميزات)
 
-## How can I deploy this project?
+### تجربة المستخدم
+- Loading states للعمليات
+- Toast notifications للنجاح والأخطاء
+- تأكيد قبل الحذف
+- واجهة متجاوبة بالكامل
 
-Simply open [Lovable](https://lovable.dev/projects/f4239ec0-3df7-45ab-b645-e6bf4e78d346) and click on Share -> Publish.
+## الأمان والأداء
 
-## Can I connect a custom domain to my Lovable project?
+### الأمان
+- استخدام Environment Variables للمفاتيح الحساسة
+- Row Level Security في Supabase
+- تشفير البيانات الحساسة
 
-Yes, you can!
+### الأداء
+- Code splitting تلقائي مع Vite
+- Lazy loading للمكونات
+- تحسين الصور والأصول
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## النشر والتوزيع
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### خيارات النشر
+- **Vercel** (موصى به)
+- **Netlify**
+- **GitHub Pages**
+- **Supabase Hosting**
+
+### متغيرات البيئة للإنتاج
+```env
+VITE_SUPABASE_URL=your_production_url
+VITE_SUPABASE_ANON_KEY=your_production_key
+```
+
+## المساهمة والتطوير
+
+### إضافة ميزات جديدة
+1. قم بإنشاء branch جديد
+2. اكتب الكود مع التعليقات
+3. اختبر الميزة بدقة
+4. قم بعمل Pull Request
+
+### معايير الكود
+- استخدام TypeScript بشكل صارم
+- تسمية واضحة للمتغيرات والدوال
+- تعليقات باللغة العربية للوضوح
+- اتباع معايير React best practices
+
+## التواصل
+
+للاستفسارات التقنية أو المساعدة:
+- **الاسم**: يونس سلام
+- **العلامة التجارية**: ARTOVER
+- **التخصص**: تطوير تطبيقات الويب الحديثة
+
+---
+
+تم تطوير هذا المشروع بـ ❤️ بواسطة **ARTOVER**
