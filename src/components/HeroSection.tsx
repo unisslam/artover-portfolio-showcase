@@ -1,5 +1,7 @@
+
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
+
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -9,7 +11,9 @@ const HeroSection = () => {
       });
     }
   };
-  return <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+
+  return (
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 right-20 w-72 h-72 bg-accent rounded-full blur-3xl animate-float"></div>
@@ -21,8 +25,12 @@ const HeroSection = () => {
           {/* Profile Image */}
           <div className="w-40 h-40 mx-auto mb-8 relative">
             <div className="w-full h-full rounded-full bg-gradient-to-br from-accent to-primary p-1">
-              <div className="w-full h-full rounded-full bg-secondary flex items-center justify-center">
-                <span className="text-4xl font-bold text-primary">ي</span>
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <img 
+                  src="/lovable-uploads/e4d751ef-906a-46d9-8081-3e466f939597.png" 
+                  alt="المهندس يونس سلام"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent rounded-full animate-ping"></div>
@@ -33,7 +41,7 @@ const HeroSection = () => {
             <h1 className="text-5xl md:text-7xl font-bold text-primary mb-4">
               المهندس <span className="gradient-text">يونس سلام</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">مهندس نظم ومطور برمجيات | مونتير | مستشار تقني | صاحب شركة Artover</p>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">مهندس نظم ومطور برمجيات | مونتير | مستشار تقني | صاحب شركة Artover</p>
           </div>
 
           {/* Description */}
@@ -55,6 +63,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
