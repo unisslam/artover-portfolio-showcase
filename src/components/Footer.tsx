@@ -36,11 +36,6 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#portfolio" className="text-gray-300 hover:text-accent transition-colors duration-200">
-                  معرض الأعمال
-                </a>
-              </li>
-              <li>
                 <a href="#contact" className="text-gray-300 hover:text-accent transition-colors duration-200">
                   تواصل معي
                 </a>
@@ -53,7 +48,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">معلومات التواصل</h3>
             <div className="space-y-2 text-gray-300">
               <p>📧 unisslam@gmail.com</p>
-              <p>📱 +964 7730300804</p>
+              <p>📱 +96407730300804</p>
               <p>📍 العراق العظيم، محافظة ديالى</p>
             </div>
             <div className="flex space-x-4 space-x-reverse pt-4">

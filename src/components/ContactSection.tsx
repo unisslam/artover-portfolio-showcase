@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -12,8 +13,14 @@ const ContactSection = () => {
     email: '',
     message: ''
   });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // EmailJS Configuration
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_r3aeb4h';
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_qv2v6mg';
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'NuUvNCyv42_BrAvvy';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -26,14 +33,46 @@ const ContactSection = () => {
       return;
     }
 
-    // Simulate form submission
-    toast({
-      title: "تم الإرسال بنجاح",
-      description: "شكراً لك! سأتواصل معك في أقرب وقت ممكن.",
-    });
+    setIsLoading(true);
 
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
+    try {
+      // إرسال الإيميل باستخدام EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'unisslam@gmail.com', // الإيميل المستلم
+        reply_to: formData.email,
+      };
+
+      // إرسال فعلي باستخدام EmailJS
+      const result = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      console.log('Email sent successfully:', result);
+      
+      toast({
+        title: "تم الإرسال بنجاح! ✅",
+        description: "شكراً لك! تم إرسال رسالتك إلى unisslam@gmail.com وسأتواصل معك قريباً.",
+      });
+
+      // Reset form
+      setFormData({ name: '', email: '', message: '' });
+      
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "خطأ في الإرسال ❌",
+        description: "حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى أو التواصل مباشرة عبر unisslam@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -134,9 +173,17 @@ const ContactSection = () => {
 
                 <Button 
                   type="submit"
-                  className="w-full bg-accent hover:bg-accent/90 text-lg py-3"
+                  disabled={isLoading}
+                  className="w-full bg-accent hover:bg-accent/90 text-lg py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  إرسال الرسالة
+                  {isLoading ? (
+                    <>
+                      <span className="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span>
+                      جاري الإرسال...
+                    </>
+                  ) : (
+                    'إرسال الرسالة'
+                  )}
                 </Button>
               </form>
             </CardContent>
@@ -164,7 +211,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="font-medium text-primary">الهاتف</p>
-                      <p className="text-muted-foreground">+964 7730300804</p>
+                      <p className="text-muted-foreground">+96407730300804</p>
                     </div>
                   </div>
 
